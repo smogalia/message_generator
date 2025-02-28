@@ -2,6 +2,33 @@ const subject = ["Le succès","La créativité","Le courage","L'innovation", "La
 const action= ["est la clé de", "ouvre la porte à",    "transforme",    "illumine",    "défie",    "nourrit",    "révèle",    "façonne",    "inspire",    "transcende",    "catalyse",    "amplifie",    "enrichit",    "propulse",    "réinvente",    "cultive",   "déclenche",    "harmonise",    "libère",    "dynamise"];
 const qualities = ["la réussite personnelle.","un avenir meilleur.","les obstacles en opportunités.","notre perception du monde.","les limites du possible.","l'épanouissement de l'âme.","le potentiel caché en chacun.","la manière dont nous vivons.","les frontières de la connaissance.","notre compréhension de la vie.","la croissance intérieure.","l'excellence humaine.","les horizons de l'imagination.","la quête de sens.","l'harmonie avec soi-même.","la réalisation de nos rêves.","la transformation positive.","l'équilibre entre corps et esprit.","l'innovation constante.","l'évolution personnelle et collective."]
 
+const asciiArt = [
+    `
+      /\\_/\\
+     ( o.o )
+      > ^ <
+    `,
+    `
+     /\\_/\\
+    ( o.o )
+     )   (
+    /     \\
+   /       \\
+  |  |   |  |
+  (__|___|__)
+    `,
+    `
+     /\\___/\\
+    (  o o  )
+    /   ^   \\
+   /  \\   /  \\
+  |    | |    |
+  \\__/\\___/\\__/
+    `
+  ];
+  
+
+
 const returnPart = (part) => {
     return part[Math.floor(Math.random() * part.length)];
 }
@@ -10,7 +37,7 @@ const phraseConstructor = ()=>{
     const phrase=[];
     phrase.push(returnPart(subject));
     //let actionChoosed = returnPart(action);
-    let actionChoosed = "est la clé de";
+    let actionChoosed = "ouvre la porte à";
     let qualitiesChoosed = returnPart(qualities);
 
     if (actionChoosed.endsWith(" de")){
@@ -42,7 +69,13 @@ const phraseConstructor = ()=>{
     }
     phrase.push(actionChoosed);
     phrase.push(qualitiesChoosed);
-    return phrase.join(" ");
+    
+    //return phrase.join(" ");
+
+
+    const randomArt = asciiArt[Math.floor(Math.random() * asciiArt.length)];
+
+  return `${randomArt}\n\n${phrase.join(" ")}`;
 }
 console.log("Ton message inspirant:")
 console.log(phraseConstructor());
