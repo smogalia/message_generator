@@ -36,8 +36,7 @@ const returnPart = (part) => {
 const phraseConstructor = ()=>{
     const phrase=[];
     phrase.push(returnPart(subject));
-    //let actionChoosed = returnPart(action);
-    let actionChoosed = "ouvre la porte à";
+    let actionChoosed = returnPart(action);
     let qualitiesChoosed = returnPart(qualities);
 
     if (actionChoosed.endsWith(" de")){
@@ -58,6 +57,25 @@ const phraseConstructor = ()=>{
             case "l'":
                 actionChoosed = actionChoosed.slice(0, -2) + "de l'";
                 qualitiesChoosed = qualitiesChoosed.slice(2);
+                break;
+            case "un":
+            case "une":
+                actionChoosed = actionChoosed.slice(0, -2) + "d'";
+                break;
+            default:
+                break;
+        }
+    }
+    if (actionChoosed.endsWith(" à")){
+        const firstWord = qualitiesChoosed.split(' ')[0].toLowerCase();
+        switch (firstWord){
+            case "le":
+                actionChoosed = actionChoosed.slice(0, -1) + "au";
+                qualitiesChoosed = qualitiesChoosed.slice(3);
+                break;
+            case "les":
+                actionChoosed = actionChoosed.slice(0, -1) + "aux";
+                qualitiesChoosed = qualitiesChoosed.slice(4);
                 break;
             case "un":
             case "une":
